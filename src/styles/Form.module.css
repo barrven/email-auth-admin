@@ -1,0 +1,13 @@
+.centered {
+    margin: auto;
+    cursor: pointer;
+}
+
+.centered a:hover{
+    color: var(--gray);
+}
+
+.formParent{
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
