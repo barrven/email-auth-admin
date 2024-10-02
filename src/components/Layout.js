@@ -5,7 +5,7 @@ import { auth } from '@/firebase/config';
 import { onAuthStateChanged } from 'firebase/auth';
 
 import { useRouter } from "next/router";
-import { signOut } from "firebase/auth";
+// import { signOut } from "firebase/auth";
 
 import Navbar from "@/components/Navbar";
 

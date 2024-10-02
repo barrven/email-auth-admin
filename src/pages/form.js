@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { useState } from 'react';
 import styles from "@/styles/Form.module.css";
-import Navbar from "@/components/Navbar";
 
 
 export default function FormPage() {

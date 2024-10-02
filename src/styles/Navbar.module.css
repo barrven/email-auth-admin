@@ -1,90 +1,107 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--primary);
-    padding: 8px;
-    position: relative;
-  }
+  /* position absolute is needed to 
+  let items display over top */
+  position: absolute;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--primary);
+  padding: 8px;
+  z-index: 3;
+}
   
-  .logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: var(--foreground);
-    border-radius: 50%;
-    object-fit: cover;
-    height: 40px;
-    width: 40px;
-    box-shadow: 0px 2px 1px rgb(58, 58, 58);
-  }
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--foreground);
+  border-radius: 50%;
+  object-fit: cover;
+  height: 40px;
+  width: 40px;
+  box-shadow: 0px 2px 1px rgb(58, 58, 58);
+}
   
+/* Menu displays on top of .navbar */
+.menu {
+  display: flex;
+  gap: 1.5rem;
+  padding-right: 1rem;
+  height: 3.5rem;
+  align-items: center;
+  justify-content: right;
+}
+  
+.menu a {
+  text-decoration: none;
+  color: var(--foreground);
+  font-size: 16px;
+  transition: color 0.3s ease;
+  border-bottom: 4px solid transparent;
+  padding-bottom: 2px;
+  transition: border-bottom 0.3s ease;
+  max-width: fit-content;
+  z-index: 4;
+}
+  
+.menu a:hover {
+  border-bottom: 4px solid var(--foreground);
+}
+
+.hamburger {
+  display: none;
+}
+
+.spacer{
+  height: 2.5rem;
+  transition: height 0.3s ease-in-out;
+}
+  
+@media (max-width: 768px) {
+  .navbar{
+    z-index: 3;
+  }
+
+  .logo{
+    z-index: 3;
+  }
+
   .menu {
-    display: flex;
-    gap: 1.5rem;
-    padding-right: 1rem;
+    background-color: var(--primary-hover);
+    text-align: center;
+    position: fixed;
+    height: auto;
+    top: 50px;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+    z-index: 1;
+    transform: translateY(-200px);
+    transition: transform 0.3s ease-in-out;
   }
-  
-  .menu a {
-    text-decoration: none;
-    color: var(--foreground);
-    font-size: 16px;
-    transition: color 0.3s ease;
-    border-bottom: 4px solid transparent;
-    padding-bottom: 2px;
-    transition: border-bottom 0.3s ease;
-    max-width: fit-content;
+
+  .menu.open {
+    transform: translateY(0);
+    transition: transform 0.3s ease-in-out;
   }
-  
-  .menu a:hover {
-    /* color: var(--primary); */
-    border-bottom: 4px solid var(--foreground);
-  }
-  
+
   .hamburger {
-    display: none;
+    display: flex;
     flex-direction: column;
     cursor: pointer;
     gap: 5px;
+    z-index: 3;
   }
-  
-  .bar {
+
+  .bar{
     width: 25px;
     height: 3px;
     background-color: var(--foreground);
     transition: 0.3s;
   }
-  
-  /* Responsive styles */
-  @media (max-width: 768px) {
-    .menu {
-      display: none;
-      position: fixed;
-      top: 50px;
-      right: 0;
-      flex-direction: column;
-      /* background-color: var(--background); */
-      width: 100%;
-      padding: 20px;
-      transition: position 0.3s ease-in-out
-    }
-  
-    .menu.open {
-      display: flex;
-      background-color: var(--primary-hover);
-      text-align: center;
-    }
-  
-    .hamburger {
-      display: flex;
-    }
 
-    .spacer.open{
-      height: 190px;
-    }
-
-    .menu a:hover {
-      /* color: var(--primary); */
-      /* border-bottom: 4px solid transparent; */
-    }
+  .spacer.open{
+    height: 240px; /* change this to get the hight of the drawer*/
   }
-  
+}
+    
