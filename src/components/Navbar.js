@@ -2,15 +2,14 @@ import { useState } from 'react';
 import styles from '@/styles/Navbar.module.css'; // Add a new module CSS file for the navbar
 // import { useRouter } from 'next/router';
 import MenuIcon from '@/components/MenuIcon';
+import { useUser } from '@/services/UserContext';
 
-const Navbar = ({ user }) => {
-
+const Navbar = () => {
+    
     const [isOpen, setIsOpen] = useState(false);
     // const router = useRouter();
-
-    const toggleMenu = () => {
-        setIsOpen(!isOpen);
-    };
+    const user = useUser();
+    console.log(user)
 
     return (
         <div>
@@ -24,10 +23,12 @@ const Navbar = ({ user }) => {
                         </a>
                     </div>
 
+                    <div>{user && user.email}</div>
+
                     <MenuIcon 
                         contStyle={styles.hamburger}
                         barStyle={styles.bar}
-                        onClick={toggleMenu}
+                        onClick={()=> setIsOpen(!isOpen)}
                     />
 
                 </div>
@@ -36,8 +37,7 @@ const Navbar = ({ user }) => {
                 <div className={`${styles.menu} ${isOpen ? styles.open : ''}`}>
                     <a href="/">Home</a>
                     <a href="/form">Send Email</a>
-                    <a href="/">Services</a>
-                    <a href="/">Contact</a>
+                    <a href="/sign-in">Sign in</a>
                 </div>
 
             </nav>
